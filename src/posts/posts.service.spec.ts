@@ -24,5 +24,16 @@ describe('PostsService', () => {
     expect(service).toBeDefined();
   });
 
-  // Add more tests as needed for service methods
+  it('should have a deletePost method', () => {
+    expect(service.deletePost).toBeDefined();
+  });
+
+  it('should call deletePost method with correct parameters', async () => {
+    const postId = 'testId';
+    service.deletePost = jest.fn().mockResolvedValue({});
+    
+    await service.deletePost(postId);
+    
+    expect(service.deletePost).toHaveBeenCalledWith(postId);
+  });
 });
